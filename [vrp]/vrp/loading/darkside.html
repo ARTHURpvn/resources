@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>loadscreen</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+    <script src="nui://game/ui/jquery.js" type="text/javascript"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="theforce.css">
+</head>
+
+<body>
+    <div id="bg_alt"></div>
+    <div id="fare"></div>
+    <!-- <img id="background" src="./background.png" alt="background"> -->
+    <video id="background" src="http://localhost/loading/loading.mp4" muted autoplay loop></video>
+
+    <!-- <img id="logo" src="logo.png">  -->
+
+    <div class="row" style="font-size:2em;">
+        <div class="column">
+            <div class="loader2" style="font-weight: 600;" >
+                <!-- <font color="#fff">CARREGANDO CIDADE... -->
+            </div>
+        </div>
+    </div>
+    <div class="player">
+        <span id="arm"></span>
+
+        <div class="infoPlayer">
+            <span id="song">Mc Lan e o povo</span>
+            <div class="timer" id="timer">0:00</div>
+            <audio id="music" preload="auto"></audio>
+        </div>
+
+        <div id="slider">
+            <div id="elapsed"></div>
+            <div id="buffered"></div>
+        </div>
+
+        <div class="playerAudio">
+            <button id="previous"><i class="fas fa-backward"></i></button>
+            <button id="play"><i class="fas fa-play"></i></button>
+            <button id="pause" style="display: none;"><i class="fas fa-pause"></i></button>
+            <button id="next"><i class="fas fa-forward"></i></button>
+            <div class="slider">
+                <div class="volume"></div>
+                <input type="range" id="volume" min="0" max="1" step="0.01" value="0.50" />
+            </div>
+        </div>
+
+    </div>
+
+    <script src="lightsaber.js" type="text/javascript"></script>
+    <script src="font.js" type="text/javascript"></script>
+    <script>
+        $('input[type=range]').on('input', function (e) {
+            var min = e.target.min,
+                max = e.target.max,
+                val = e.target.value;
+
+            $(e.target).css({
+                'backgroundSize': (val - min) * 100 / (max - min) + '% 100%'
+            });
+        }).trigger('input');
+    </script>
+</body>
+
+</html>
